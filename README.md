@@ -1,4 +1,4 @@
-# AWWW Software - Front-End Starter
+# Owline starter based on AWWW Software - Front-End Starter
 
 ## Configuration
 
