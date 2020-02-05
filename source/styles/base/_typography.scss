@@ -1,0 +1,129 @@
+/**
+ * Basic typography style for copy text
+ */
+body {
+  color: $text-color;
+  font: normal calc-rem($base-font-size) $text-font-stack;
+  line-height: $base-line-height;
+  font-weight: $base-font-weight;
+}
+
+input,
+textarea,
+select {
+  font-family: $text-font-stack;
+
+  @include placeholder {
+    font-family: $text-font-stack;
+  }
+}
+
+/// Header
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 600;
+}
+
+h1,
+.h1 {
+  font-size: calc-rem(45px);
+}
+
+h2,
+.h2 {
+  font-size: calc-rem(39px);
+}
+
+h3,
+.h3 {
+  font-size: calc-rem(35px);
+}
+
+h4,
+.h4 {
+  font-size: calc-rem(28px);
+}
+
+h5,
+.h5 {
+  font-size: calc-rem(24px);
+}
+
+/// URL
+a {
+  color: $url-color;
+  text-decoration: none;
+
+  @include on-event {
+    color: $url-color;
+    text-decoration: underline;
+  }
+}
+
+/// Text
+p {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/// Helpers
+/// -- Text properities
+.bold,
+strong {
+  font-weight: bold;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+// -- Text alignment
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+$base: $base-font-size;
+
+$font-sizing: (
+  "xx-small" : 12,
+  "s-small": 14,
+  "small": 16,
+  "medium": 18,
+  "large": 20,
+  "x-large": 22,
+  "xx-large": 24,
+) !default;
+
+@each $name, $size in $font-sizing {
+  .#{$name} {
+    $max: $size / $base;
+    $min: ($size/$base) * 0.7;
+    @include css-lock($min, $max)
+  }
+}

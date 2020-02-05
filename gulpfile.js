@@ -21,7 +21,7 @@ const FILES = {
     destination: `${DIRS.build}/assets/images/`,
   },
   styles: {
-    source: `${DIRS.source}/styles/styles.scss`,
+    source: `${DIRS.source}/styles/main.scss`,
     watch: `${DIRS.source}/styles/**/*`,
     destination: `${DIRS.build}/assets/styles/`,
   },

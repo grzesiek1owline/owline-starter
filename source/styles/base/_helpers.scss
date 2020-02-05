@@ -1,0 +1,94 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0; /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+.ovh {
+  overflow: hidden;
+}
+
+.obf {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/**
+* Spacing
+* Add class to space from 5 to 50px for margins and paddings
+*/
+
+@for $i from 1 through 10 {
+  $space: 5 * $i;
+
+  .mat-#{$i} {
+    margin-top: $space;
+  }
+
+  .mab-#{$i} {
+    margin-bottom: $space;
+  }
+
+  .mal-#{$i} {
+    margin-left: $space;
+  }
+
+  .mar-#{$i} {
+    margin-right: $space;
+  }
+
+  .pat-#{$i} {
+    padding-top: $space;
+  }
+
+  .pab-#{$i} {
+    padding-bottom: $space;
+  }
+
+  .pal-#{$i} {
+    padding-left: $space;
+  }
+
+  .par-#{$i} {
+    padding-right: $space;
+  }
+}
