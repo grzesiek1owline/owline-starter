@@ -347,3 +347,27 @@
     #{$property}: #{$max-size}#{$unit};
   }
 }
+
+// column generator
+
+@mixin grid-generator($size, $grid-columns) {
+	@for $i from 1 through $grid-columns {
+		.col-#{$size}-#{$i}-#{$grid-columns} {
+			width: percentage($i / $grid-columns);
+		}
+	}
+}
+
+@mixin respond-from($media) {
+	@if $media == xs {
+		@media (min-width: 0px)  { @content; }
+	} @else if $media == sm {
+		@media (min-width: 768px) { @content; }
+	} @else if $media == md {
+		@media (min-width: 1200) { @content; }
+	} @else if $media == lg {
+		@media (min-width: 1440) { @content; }
+	} @else if $media == xl {
+		@media (min-width: 1800) { @content; }
+	}
+}

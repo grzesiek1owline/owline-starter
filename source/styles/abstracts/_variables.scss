@@ -38,21 +38,6 @@ $mid-grey: rgb(153, 153, 153) !default;
 /// @type Color
 $dark-grey: rgb(68, 68, 68) !default;
 
-/// Container"s maximum width
-/// @type Length
-$max-width: 1920px !default;
-
-/// Breakpoints map
-/// @prop {String} keys - Keys are identifiers mapped to a given length
-/// @prop {Map} values - Values are actual breakpoints expressed in pixels
-$breakpoints: (
-  "s": 320px,
-  "xs": 768px,
-  "m": 992px,
-  "l": 1024px,
-  "xl": 1366px,
-  "xxl": 1600px,
-) !default;
 
 /// Spacing
 /// @type Size
