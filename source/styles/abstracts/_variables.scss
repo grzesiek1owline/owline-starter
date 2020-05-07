@@ -2,50 +2,104 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
-/// Regular font family
-/// @type List
-$text-font-stack: "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
-
-/// Code (monospace) font family
-/// @type List
-$code-font-stack: "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Monaco", monospace !default;
-
-/// Font sizing
-/// @type Size
-$base-font-size: 16px;
-$base-font-size-value: 16;
-$base-line-height: 1.5;
-$base-font-weight: 400;
-
-/// Copy text color
-/// @type Color
-$url-color: blue;
-$text-color: rgb(34, 34, 34) !default;
-
-/// Main brand color
-/// @type Color
-$brand-color: rgb(229, 0, 80) !default;
-
-/// Light grey
-/// @type Color
-$light-grey: rgb(237, 237, 237) !default;
-
-/// Medium grey
-/// @type Color
-$mid-grey: rgb(153, 153, 153) !default;
-
-/// Dark grey
-/// @type Color
-$dark-grey: rgb(68, 68, 68) !default;
-
-
-/// Spacing
-/// @type Size
-
-$gutter: 10px;
-
-/// Relative or absolute URL where all assets are served from
-/// @type String
-/// @example scss - When using a CDN
+// *** Common
+$html-font-size: 16px;
 $base-url: "../images" !default;
 $fonts: "../fonts/";
+
+// *** Grid
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px) !default;
+
+$container-max-widths: (sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1600px) !default;
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;
+
+// *** Spacing
+$gap: 15px;
+
+// *** Typography
+// **** Font Stack
+$font-primary: "FuturaPT",
+"Helvetica Neue Light",
+"Helvetica Neue",
+"Helvetica",
+"Arial",
+sans-serif !default;
+$font-headings: "Transat",
+"Helvetica Neue Light",
+"Helvetica Neue",
+"Helvetica",
+"Arial",
+sans-serif !default;
+// $font-second: "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Monaco", monospace !default;
+
+// **** Font sizing and styling
+$base-font-size: 16px;
+
+$font-size-jumbo: 80px;
+$font-size-xxl: 64px;
+$font-size-xl: 48px;
+$font-size-l: 42px;
+$font-size-m: 36px;
+$font-size-s: 24px;
+$font-size-xs: 14px;
+
+
+$text-font-size: calc-rem($base-font-size);
+$text-line-height: 1.5;
+$text-font-weight: 400;
+$text-baseline: 10px;
+
+$heading-line-height: 1.125;
+$heading-font-weight: 700;
+$heading-baseline: 20px;
+
+// **** Font Colors
+$text-color: #12464f;
+$text-color-reverse: #fff;
+$heading-color: #12464f;
+$heading-color-reverse: #fff;
+
+$cta-color: #67203E;
+$accept-color: green;
+$warning-color: yellow;
+$error-color: red;
+$loud-color: pink;
+$quiet-color: grey;
+$hr-color: #000;
+$marker-color: yellow;
+
+// *** a tag default variables
+$a-font: normal calc-rem($base-font-size) $font-primary;
+$a-color: #00f;
+$a-hover-color: darken($a-color, 60);
+$a-mb: $text-baseline;
+
+// *** Content
+// **** Colors
+$bg-color-primary: #fff;
+$bg-color-second: #12464f;
+$bg-color-alternative: #0c868c;
+
+$bg-color-loud: pink;
+$bg-color-quiet: grey;
+
+$border-color: #ededed;
+$border-color-focus: gold;
+$border-color-loud: pink;
+$border-color-quit: grey;
+
+$color-primary: blue;
+$color-secondary: red;
+$color-initial: gold;

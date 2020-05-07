@@ -1,129 +1,234 @@
 /**
- * Basic typography style for copy text
+ * Typography
+ * =================================
+ * - Base
+ * - Paragraphs
+ * - Headings
+ * - Type sizes
+ * - Misc
+ * - Utilities
+ *
+ * Body font size, leadings etc have been set in _variables.scss
+ *
+ * See http://modularscale.com for
+ *
  */
-body {
-  color: $text-color;
-  font: normal calc-rem($base-font-size) $text-font-stack;
-  line-height: $base-line-height;
-  font-weight: $base-font-weight;
+
+html {
+  font-size: $html-font-size;
 }
 
+body {
+  color: $text-color;
+  font: normal calc-rem($base-font-size) $font-primary;
+  line-height: $text-line-height;
+  font-weight: $text-font-weight;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+}
+
+/*** Paragraphs */
+p {
+  font: normal calc-rem($base-font-size) $font-primary;
+  margin-top: 0;
+  margin-bottom: $text-baseline;
+}
+
+span {
+  font-size: inherit;
+}
+
+/*** Forms */
 input,
 textarea,
 select {
-  font-family: $text-font-stack;
+  font-family: $font-primary;
 
   @include placeholder {
-    font-family: $text-font-stack;
+    font-family: $font-primary;
   }
 }
 
-/// Header
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  font-weight: 600;
-}
-
-h1,
-.h1 {
-  font-size: calc-rem(45px);
-}
-
-h2,
-.h2 {
-  font-size: calc-rem(39px);
-}
-
-h3,
-.h3 {
-  font-size: calc-rem(35px);
-}
-
-h4,
-.h4 {
-  font-size: calc-rem(28px);
-}
-
-h5,
-.h5 {
-  font-size: calc-rem(24px);
-}
-
-/// URL
+/*** urls */
 a {
-  color: $url-color;
-  text-decoration: none;
+  font: $a-font;
+  margin-top: 0;
+  margin-bottom: $a-mb;
+  color: $a-color;
+  transition: color 200ms ease;
 
   @include on-event {
-    color: $url-color;
+    color: $a-hover-color;
     text-decoration: underline;
   }
 }
 
-/// Text
-p {
-  font-size: inherit;
-  font-weight: inherit;
+/*** Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: $font-headings;
+  font-weight: $heading-font-weight;
+  line-height: $heading-line-height;
+  text-rendering: optimizelegibility; // Fix the character spacing for headings
+  margin-bottom: $heading-baseline;
 }
 
-/// Helpers
-/// -- Text properities
-.bold,
-strong {
+// Use the helper classes to emulate styles for another element
+h1,
+.h1,
+.alpha {
+  font-size: calc-rem($font-size-jumbo);
+  line-height: 1;
+}
+
+h2,
+.h2,
+.beta {
+  font-size: calc-rem($font-size-xxl);
+}
+
+h3,
+.h3,
+.gamma {
+  font-size: calc-rem($font-size-xl);
+}
+
+h4,
+.h4,
+.delta {
+  font-size: calc-rem($font-size-l);
+}
+
+h5,
+.h5,
+.epsilon,
+h6,
+.h6,
+.zeta {
+  font-size: calc-rem($font-size-m);
+}
+
+// Only give these headings a margin-top if they are after other elements
+* + h1,
+* + .h1,
+* + .alpha,
+* + h2,
+* + .h2,
+* + .beta,
+* + h3,
+* + .h3,
+* + .gamma,
+* + h4,
+* + .h4,
+* + .delta {
+  margin-top: $heading-baseline;
+}
+
+small {
+  font-size: calc-rem($font-size-xs);
+}
+
+/**
+ * Miscellaneous
+ */
+
+// Emphasis
+strong,
+b {
   font-weight: bold;
 }
 
-.uppercase {
-  text-transform: uppercase;
+em,
+i {
+  font-style: italic;
 }
 
-// -- Text alignment
-.text-left {
-  text-align: left;
+// Abbreviations and acronyms
+abbr[title] {
+  border-bottom: 1px dotted #ddd;
+  cursor: help;
 }
 
-.text-right {
-  text-align: right;
-}
+/**
+ * Blockquotes
+ */
+blockquote {
+  padding-left: 10px;
 
-.text-center {
-  text-align: center;
-}
-
-.text-justify {
-  text-align: justify;
-}
-
-.text-nowrap {
-  white-space: nowrap;
-}
-
-$base: $base-font-size-value;
-
-$font-sizing: (
-  "xx-small" : 12,
-  "s-small": 14,
-  "small": 16,
-  "medium": 18,
-  "large": 20,
-  "x-large": 22,
-  "xx-large": 24,
-) !default;
-
-@each $name, $size in $font-sizing {
-  .#{$name} {
-    $max: $size / $base;
-    $min: ($size/$base) * 0.7;
-    @include css-lock($min, $max)
+  p {
+    margin-bottom: 0;
+    font-weight: 300;
   }
+
+  small {
+    display: block;
+    color: lighten(#000, 70%);
+
+    &::before {
+      content: "\2014 \00A0";
+    }
+  }
+}
+
+// Quotes
+q,
+blockquote {
+  &::before,
+  &::after {
+    content: "";
+  }
+}
+
+cite {
+  font-style: normal;
+}
+
+// Addresses styling not present in S5, Chrome
+dfn {
+  font-style: italic;
+}
+
+// Addresses styling not present in IE6/7/8/9
+mark {
+  background: $marker-color;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+// Prevents sub and sup affecting line-height in all browsers
+// gist.github.com/413930
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+// Horizontal rules
+hr {
+  margin: ($text-baseline) 0;
+  border: 0;
+  height: 1px;
+  background-color: $hr-color;
+}
+
+// https://justmarkup.com/log/2015/07/dealing-with-long-words-in-css/
+.hyphenate {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }

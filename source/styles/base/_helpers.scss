@@ -5,7 +5,7 @@
 /**
  * Clear inner floats
  */
-.clearfix::after {
+.h-clearfix::after {
   clear: both;
   content: "";
   display: table;
@@ -16,18 +16,18 @@
  * 1. Needed in WebKit-based browsers because of an implementation bug;
  *    See: https://code.google.com/p/chromium/issues/detail?id=457146
  */
-.hide-text {
+.h-hide-text {
   overflow: hidden;
-  padding: 0; /* 1 */
+  padding: 0;
   text-indent: 101%;
   white-space: nowrap;
 }
 
-.ovh {
+.h-ovh {
   overflow: hidden;
 }
 
-.obf {
+.h-obf {
   position: absolute;
   left: 0;
   top: 0;
@@ -41,7 +41,7 @@
  * Shamelessly borrowed from HTML5Boilerplate:
  * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
  */
-.visually-hidden {
+.h-visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -52,43 +52,39 @@
   width: 1px;
 }
 
-/**
-* Spacing
-* Add class to space from 5 to 50px for margins and paddings
-*/
+/*** Text Utilities */
+.h-text-center {
+  text-align: center;
+}
 
-@for $i from 1 through 10 {
-  $space: 5 * $i;
+.h-text-left {
+  text-align: left;
+}
 
-  .mat-#{$i} {
-    margin-top: $space;
-  }
+.h-text-right {
+  text-align: right;
+}
 
-  .mab-#{$i} {
-    margin-bottom: $space;
-  }
+.h-light {
+  font-weight: 300;
+}
 
-  .mal-#{$i} {
-    margin-left: $space;
-  }
+.h-medium {
+  font-weight: 400;
+}
 
-  .mar-#{$i} {
-    margin-right: $space;
-  }
+.h-regular {
+  font-weight: 500;
+}
 
-  .pat-#{$i} {
-    padding-top: $space;
-  }
+.h-bold {
+  font-weight: bold;
+}
 
-  .pab-#{$i} {
-    padding-bottom: $space;
-  }
+.h-xbold {
+  font-weight: bolder;
+}
 
-  .pal-#{$i} {
-    padding-left: $space;
-  }
-
-  .par-#{$i} {
-    padding-right: $space;
-  }
+.h-parent-size {
+  font-size: inherit;
 }

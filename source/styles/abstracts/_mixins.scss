@@ -209,14 +209,8 @@
 
 // hex  bg opacity
 @mixin hex-bg($color, $opacity: 0.3) {
-  background: $color; /* The Fallback */
+  background: $color;
   background: rgba($color, $opacity);
-}
-
-// hex  border opacity
-@mixin hex-bor($color, $opacity: 0.3) {
-  border-color: $color; /* The Fallback */
-  border-color: rgba($color, $opacity);
 }
 
 // rwd mixin
@@ -236,7 +230,7 @@
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   border-radius: $radius;
-  background-clip: padding-box; /* stops bg color from leaking outside the border: */
+  background-clip: padding-box;
 }
 
 // font options
@@ -272,12 +266,9 @@
   $index: str-index($string, $search);
 
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace +
-      str-replace(
-        str-slice($string, $index + str-length($search)),
-        $search,
-        $replace
-      );
+    @return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)),
+    $search,
+    $replace);
   }
 
   @return $string;
@@ -288,37 +279,28 @@
 // Font Face
 // =============================================================================
 
-@mixin font-face(
-  $name,
+@mixin font-face($name,
   $path,
   $weight: null,
   $style: null,
-  $exts: eot woff2 woff ttf svg
-) {
+  $exts: eot woff2 woff ttf svg) {
   $src: null;
 
-  $extmods: (
-    eot: "?",
-    svg: "#" + str-replace($name, " ", "_")
-  );
+  $extmods: (eot: "?",
+      svg: "#"+ str-replace($name, " ", "_"));
 
-  $formats: (
-    otf: "opentype",
-    ttf: "truetype"
-  );
+  $formats: (otf: "opentype",
+      ttf: "truetype"
+    );
 
   @each $ext in $exts {
-    $extmod: if(
-      map-has-key($extmods, $ext),
-      $ext + map-get($extmods, $ext),
-      $ext
-    );
+    $extmod: if(map-has-key($extmods, $ext),
+        $ext + map-get($extmods, $ext),
+        $ext);
     $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
-    $src: append(
-      $src,
-      url(quote($path + "." + $extmod)) format(quote($format)),
-      comma
-    );
+    $src: append($src,
+        url(quote($path + "." + $extmod)) format(quote($format)),
+      comma);
   }
 
   @font-face {
@@ -348,26 +330,34 @@
   }
 }
 
-// column generator
-
-@mixin grid-generator($size, $grid-columns) {
-	@for $i from 1 through $grid-columns {
-		.col-#{$size}-#{$i}-#{$grid-columns} {
-			width: percentage($i / $grid-columns);
-		}
-	}
-}
-
 @mixin respond-from($media) {
-	@if $media == xs {
-		@media (min-width: 0px)  { @content; }
-	} @else if $media == sm {
-		@media (min-width: 768px) { @content; }
-	} @else if $media == md {
-		@media (min-width: 1200) { @content; }
-	} @else if $media == lg {
-		@media (min-width: 1440) { @content; }
-	} @else if $media == xl {
-		@media (min-width: 1800) { @content; }
-	}
+  @if $media==xs {
+    @media (min-width: 0px) {
+      @content;
+    }
+  }
+
+  @else if $media==sm {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+
+  @else if $media==md {
+    @media (min-width: 1200) {
+      @content;
+    }
+  }
+
+  @else if $media==lg {
+    @media (min-width: 1440) {
+      @content;
+    }
+  }
+
+  @else if $media==xl {
+    @media (min-width: 1800) {
+      @content;
+    }
+  }
 }

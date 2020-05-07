@@ -1,3 +1,13 @@
 // -----------------------------------------------------------------------------
 // This file contains all @font-face declarations, if any.
 // -----------------------------------------------------------------------------
+
+// TRANSAT
+@include font-face("Transat", $fonts + "Transat/Bold/transat_bold-webfont", 700, normal, ttf woff2 woff);
+@include font-face("Transat", $fonts + "Transat/Bold/transat_bold-webfont", 700, normal, ttf woff2 woff);
+
+// FUTURA
+@include font-face("FuturaPT", $fonts + "Futura/Bold/FuturaPTBold", 700, normal, otf woff2 woff);
+@include font-face("FuturaPT", $fonts + "Futura/Book/FuturaPTBook", 300, normal, otf woff2 woff);
+@include font-face("FuturaPT", $fonts + "Futura/Medium/FuturaPTMedium", 500, normal, otf woff2 woff);
+@include font-face("FuturaPT", $fonts + "Futura/Light/FuturaPTLight", 400, normal, otf woff2 woff);
